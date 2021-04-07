@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import static org.junit.jupiter.api.Assertions.*;
 
 @MicronautTest
-public class PathFinderControllerControllerTest {
+public class PathMapControllerTest {
 
     @Inject
     @Client("/")
@@ -16,6 +16,6 @@ public class PathFinderControllerControllerTest {
 
     @Test
     public void testIndex() throws Exception {
-        assertEquals(HttpStatus.OK, client.toBlocking().exchange("/pathFinderController").status());
+        assertEquals(HttpStatus.OK, client.toBlocking().exchange("/map").status());
     }
 }
