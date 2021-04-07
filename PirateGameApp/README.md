@@ -101,3 +101,128 @@ Instructions on how to run :
 
 3. Issue this command in the terminal
 ./gradlew run
+
+On a successful start, you should see this in your terminal or cmd : 
+
+Emmanuels-MacBook-Pro:PirateGameApp emap$ ./gradlew run
+
+> Task :run
+ __  __ _                                  _   
+|  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_ 
+| |\/| | |/ __| '__/ _ \| '_ \ / _` | | | | __|
+| |  | | | (__| | | (_) | | | | (_| | |_| | |_ 
+|_|  |_|_|\___|_|  \___/|_| |_|\__,_|\__,_|\__|
+  Micronaut (v2.3.0)
+
+16:08:17.622 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 7349ms. Server Running: http://localhost:48901
+<=========----> 75% EXECUTING [2m 12s]
+
+
+##REQUEST SAMPLE -> POST
+
+ {"game_map" : [
+    [{"type": "coin", "amount": 10}, 
+    {"type": "coin", "amount": 11}, 
+    {"type": "coin", "amount": 21}, 
+    {"type": "coin", "amount": 0}],
+
+    [{"type": "coin", "amount": 9}, 
+    {"type": "coin", "amount": 8}, 
+    {"type": "rock"}, 
+    {"type": "coin", "amount": 99}],
+
+    [{"type": "coin", "amount": 6}, 
+    {"type": "bomb"}, 
+    {"type": "rock"}, 
+    {"type": "rock"}],
+
+    [{"type": "coin", "amount": 0}, 
+    {"type": "coin", "amount": 9}, 
+    {"type": "coin", "amount": 9}, 
+    {"type": "coin", "amount": 9}]
+]}
+
+
+
+##RESPONSE SAMPLE -> GET
+
+{
+    "path": [
+        [
+            0,
+            1
+        ],
+        [
+            0,
+            2
+        ],
+        [
+            0,
+            3
+        ],
+        [
+            1,
+            3
+        ],
+        [
+            2,
+            3
+        ],
+        [
+            3,
+            3
+        ]
+    ],
+    "coins": 57
+}
+
+
+
+##TERMINAL LOG SAMPLES : 
+
+16:21:40.661 [default-nioEventLoopGroup-1-3] INFO  P.controller.PathFinderController - Parameters : 
+startXPosition : 0, startYPosition : 1, targetXPosition : 3, targetYPosition : 3
+16:21:40.663 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Given Targets from : { 0,1 } to : { 3,3 }
+16:21:40.663 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Move from array position : [2, 0] to : [0, 3]
+16:21:40.664 [default-nioEventLoopGroup-1-3] WARN  PirateGameApp.service.FindPiratePath - Please submit a map via the POST endpoint.
+16:21:47.829 [default-nioEventLoopGroup-1-3] INFO  P.controller.PathMapController - The JSON Data Passed to .../map : GameMapRequestDto(game_map_typeAndAmountList=[[GameMapRequestDto.TypeAndAmount(type=coin, amount=10), GameMapRequestDto.TypeAndAmount(type=coin, amount=11), GameMapRequestDto.TypeAndAmount(type=coin, amount=21), GameMapRequestDto.TypeAndAmount(type=coin, amount=0)], [GameMapRequestDto.TypeAndAmount(type=coin, amount=9), GameMapRequestDto.TypeAndAmount(type=coin, amount=8), GameMapRequestDto.TypeAndAmount(type=rock, amount=0), GameMapRequestDto.TypeAndAmount(type=coin, amount=99)], [GameMapRequestDto.TypeAndAmount(type=coin, amount=6), GameMapRequestDto.TypeAndAmount(type=bomb, amount=0), GameMapRequestDto.TypeAndAmount(type=rock, amount=0), GameMapRequestDto.TypeAndAmount(type=rock, amount=0)], [GameMapRequestDto.TypeAndAmount(type=coin, amount=0), GameMapRequestDto.TypeAndAmount(type=coin, amount=9), GameMapRequestDto.TypeAndAmount(type=coin, amount=9), GameMapRequestDto.TypeAndAmount(type=coin, amount=9)]], typeAndAmount=null)
+16:21:47.830 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.SaveGameMap - GameMapRequestDto : GameMapRequestDto(game_map_typeAndAmountList=[[GameMapRequestDto.TypeAndAmount(type=coin, amount=10), GameMapRequestDto.TypeAndAmount(type=coin, amount=11), GameMapRequestDto.TypeAndAmount(type=coin, amount=21), GameMapRequestDto.TypeAndAmount(type=coin, amount=0)], [GameMapRequestDto.TypeAndAmount(type=coin, amount=9), GameMapRequestDto.TypeAndAmount(type=coin, amount=8), GameMapRequestDto.TypeAndAmount(type=rock, amount=0), GameMapRequestDto.TypeAndAmount(type=coin, amount=99)], [GameMapRequestDto.TypeAndAmount(type=coin, amount=6), GameMapRequestDto.TypeAndAmount(type=bomb, amount=0), GameMapRequestDto.TypeAndAmount(type=rock, amount=0), GameMapRequestDto.TypeAndAmount(type=rock, amount=0)], [GameMapRequestDto.TypeAndAmount(type=coin, amount=0), GameMapRequestDto.TypeAndAmount(type=coin, amount=9), GameMapRequestDto.TypeAndAmount(type=coin, amount=9), GameMapRequestDto.TypeAndAmount(type=coin, amount=9)]], typeAndAmount=null)
+16:21:47.831 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.SaveGameMap - The first -> type : coin, amount : 10
+10, 11, 21, 0
+9, 8, 0, 99
+6, 0, 0, 0
+0, 9, 9, 9
+Live array for action : [[10, 11, 21, 0], [9, 8, 0, 99], [6, 0, 0, 0], [0, 9, 9, 9]]
+16:21:47.835 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.SaveGameMap - loadCoinsAndDoGridDisplay : [[I@1a98d71b, [I@4a8373a2, [I@495c77b0, [I@19626c12]
+16:21:53.719 [default-nioEventLoopGroup-1-3] INFO  P.controller.PathFinderController - Parameters : 
+startXPosition : 0, startYPosition : 1, targetXPosition : 3, targetYPosition : 3
+16:21:53.720 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Given Targets from : { 0,1 } to : { 3,3 }
+16:21:53.720 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Move from array position : [2, 0] to : [0, 3]
+path X : [[2, 0]]
+ok to move up
+ok to move right
+move ^ Up
+path Up : [[2, 0], [1, 0]]
+ok to move up
+ok to move right
+move ^ Up
+path Up : [[2, 0], [1, 0], [0, 0]]
+ok to move right
+move > Right
+path R : [[2, 0], [1, 0], [0, 0], [0, 1]]
+ok to move right
+move > Right
+path R : [[2, 0], [1, 0], [0, 0], [0, 1], [0, 2]]
+ok to move right
+path R* : [[2, 0], [1, 0], [0, 0], [0, 1], [0, 2], [0, 3]]
+Travelling from : [2, 0], to : [0, 3]
+Path travelled : [[2, 0], [1, 0], [0, 0], [0, 1], [0, 2], [0, 3]]
+Game Path travelled : [[0, 1], [0, 2], [0, 3], [1, 3], [2, 3], [3, 3]]
+Total Path Value : 57
+<=========----> 75% EXECUTING [21m 19s]
+> :run
+^CEmmanuels-MacBook-Pro:PirateGameApp emap$ 
+
+
+
+
