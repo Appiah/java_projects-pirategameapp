@@ -58,6 +58,54 @@ Building the App :
 
     $ docker run -p8001:8001 pirategameapp
 
+     When the command below was issued we had the error that follows it and next is how it 
+     was resolved : 
+     
+      #COMMAND : 
+           $ docker run pirategameapp
+           
+      #ERROR : 
+            Exception in thread "main" java.lang.NoClassDefFoundError: io/micronaut/runtime/Micronaut
+                    at PirateGameApp.Application.main(Application.java:8)
+            Caused by: java.lang.ClassNotFoundException: io.micronaut.runtime.Micronaut
+                    at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+                    at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+                    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+                    at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+                    ... 1 more
+
+      #RESOLVING / SOLUTION : 
+            The solution was basically to review all classes, folders, dependencies and
+            manifest files to make sure everything was in it rightful place.
+            
+            After a careful review of the  "/build/libs" folder and the jar files that
+            were successfully generated from the "./gradlew assemble" command which was
+            then followed by the "docker build -t pirategameapp ." command; I had wrongfully
+            linked to the inappropriate file.
+            Futher investigations into the "/build/libs" folder showed that there were 
+            three jar files and two of them weighed less than 32KB and one weighed more than
+            13MB. It became obvious fast that I had linked to one of the 31KB files.
+
+            The issue was fixed by doing the lines below in the "Dockerfile"
+            
+                FROM openjdk:8-jdk-alpine
+                VOLUME /tmp
+                ADD build/libs/PirateGameApp-0.1-all.jar app.jar
+                ENTRYPOINT ["java","-jar","/app.jar"]
+            
+            as compared to this below ; prior : 
+            
+                FROM openjdk:8-jdk-alpine
+                VOLUME /tmp
+                ADD build/libs/PirateGameApp-0.1-runner.jar app.jar
+                ENTRYPOINT ["java","-jar","/app.jar"]
+                
+                OR : 
+                
+                FROM openjdk:8-jdk-alpine
+                VOLUME /tmp
+                ADD build/libs/PirateGameApp-0.1.jar app.jar
+                ENTRYPOINT ["java","-jar","/app.jar"]
 
       you can check on docker images by using the command :
 
