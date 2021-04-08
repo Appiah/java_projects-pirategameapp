@@ -37,7 +37,7 @@ Building the App :
 
         Sample Response : {
 
-          Emmanuels-MacBook-Pro:PirateGameApp emap$ docker build -t pirategameapp .
+          $ docker build -t pirategameapp .
           Sending build context to Docker daemon  84.34MB
           Step 1/4 : FROM openjdk:8-jdk-alpine
           8-jdk-alpine: Pulling from library/openjdk
