@@ -44,8 +44,7 @@ java {
 jar {
     manifest {
         attributes(
-
-                'Main-Class': 'PirateGameApp.Application'
+            'Main-Class': 'PirateGameApp.Application'
         )
     }
 }

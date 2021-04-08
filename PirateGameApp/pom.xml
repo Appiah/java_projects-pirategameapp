@@ -3,10 +3,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>PirateGameApp</groupId>
-  <artifactId>pirate_2d_game_platform</artifactId>
+  <artifactId>pirateGameApp</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>pirate_core</name>
-  <description> Engine</description>
+  <name>pirateGameApp</name>
+  <description>PirateGameAppEngine</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -104,7 +104,7 @@ Instructions on how to run :
 
 On a successful start, you should see this in your terminal or cmd : 
 
-Emmanuels-MacBook-Pro:PirateGameApp emap$ ./gradlew run
+$ ./gradlew run
 
 > Task :run
  __  __ _                                  _   
@@ -221,7 +221,6 @@ Game Path travelled : [[0, 1], [0, 2], [0, 3], [1, 3], [2, 3], [3, 3]]
 Total Path Value : 57
 <=========----> 75% EXECUTING [21m 19s]
 > :run
-^CEmmanuels-MacBook-Pro:PirateGameApp emap$ 
 
 
 
