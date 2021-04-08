@@ -69,6 +69,24 @@ Building the App :
 
 
     $ docker run -p48901:48901 pirategameapp
+    
+    OR : 
+    
+    $ docker run pirategameapp
+    
+    #SAMPLE TERMINAL RESPONSE IF it all worked out : 
+    
+    $ docker run pirategameapp
+     __  __ _                                  _   
+    |  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_ 
+    | |\/| | |/ __| '__/ _ \| '_ \ / _` | | | | __|
+    | |  | | | (__| | | (_) | | | | (_| | |_| | |_ 
+    |_|  |_|_|\___|_|  \___/|_| |_|\__,_|\__,_|\__|
+      Micronaut (v2.3.0)
+    
+    12:15:45.301 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 3983ms. Server Running: http://3d48fb74311b:48901
+
+    
 
 
       you can check on docker images by using the command :
