@@ -34,9 +34,9 @@ Building the App :
 
 
 
-### TESTING THE APPLICATION ###
+## TESTING THE APPLICATION
 
-#OPTION 1 : Using docker to get the application to run :
+- [OPTION 1 : Running the app using docker ]
 
 ```
     $ docker build -t pirategameapp .
@@ -120,7 +120,7 @@ Building the App :
 
 
 
-#OPTION 2 : Running + Testing
+- [OPTION 2 : Running + Testing]
 
 Instructions on how to run :
 
