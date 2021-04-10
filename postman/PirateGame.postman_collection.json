@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "f4e66b55-0d53-4f2c-a6eb-859e5a783708",
+		"name": "PirateGame",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "setMap_For_Pirate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\"game_map\" : [\n    [{\"type\": \"coin\", \"amount\": 1}, \n    {\"type\": \"coin\", \"amount\": 2}, \n    {\"type\": \"coin\", \"amount\": 3}, \n    {\"type\": \"coin\", \"amount\": 4}],\n\n    [{\"type\": \"coin\", \"amount\": 40}, \n    {\"type\": \"coin\", \"amount\": 50}, \n    {\"type\": \"coin\", \"amount\": 6}, \n    {\"type\": \"coin\", \"amount\": 7}],\n\n    [{\"type\": \"coin\", \"amount\": 8}, \n    {\"type\": \"coin\", \"amount\": 9}, \n    {\"type\": \"coin\", \"amount\": 10}, \n    {\"type\": \"coin\", \"amount\": 11}],\n\n    [{\"type\": \"coin\", \"amount\": 0}, \n    {\"type\": \"coin\", \"amount\": 12}, \n    {\"type\": \"coin\", \"amount\": 13}, \n    {\"type\": \"coin\", \"amount\": 14}]\n]}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:48901/map",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48901",
+					"path": [
+						"map"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "setMap_For_Pirate_withRocksAndBombs",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\"game_map\" : [\n    [{\"type\": \"coin\", \"amount\": 10}, \n    {\"type\": \"coin\", \"amount\": 11}, \n    {\"type\": \"coin\", \"amount\": 21}, \n    {\"type\": \"coin\", \"amount\": 0}],\n\n    [{\"type\": \"coin\", \"amount\": 9}, \n    {\"type\": \"coin\", \"amount\": 8}, \n    {\"type\": \"rock\"}, \n    {\"type\": \"coin\", \"amount\": 99}],\n\n    [{\"type\": \"coin\", \"amount\": 6}, \n    {\"type\": \"bomb\"}, \n    {\"type\": \"rock\"}, \n    {\"type\": \"rock\"}],\n\n    [{\"type\": \"coin\", \"amount\": 0}, \n    {\"type\": \"coin\", \"amount\": 9}, \n    {\"type\": \"coin\", \"amount\": 9}, \n    {\"type\": \"coin\", \"amount\": 9}]\n]}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:48901/map",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48901",
+					"path": [
+						"map"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findPath_For_Pirate",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n        [{\"type\": \"coin\", \"amount\": 1}, \n         {\"type\": \"coin\", \"amount\": 2}, \n         {\"type\": \"coin\", \"amount\": 3}, \n         {\"type\": \"coin\", \"amount\": 4}],\n\n        [{\"type\": \"coin\", \"amount\": 5}, \n        {\"type\": \"coin\", \"amount\": 6}, \n        {\"type\": \"coin\", \"amount\": 7}, \n        {\"type\": \"coin\", \"amount\": 8}],\n        \n        [{\"type\": \"coin\", \"amount\": 9}, \n        {\"type\": \"coin\", \"amount\": 10}, \n        {\"type\": \"coin\", \"amount\": 11}, \n        {\"type\": \"coin\", \"amount\": 12}],\n        \n        [{\"type\": \"coin\", \"amount\": 13}, \n        {\"type\": \"coin\", \"amount\": 14}, \n        {\"type\": \"coin\", \"amount\": 15}, \n        {\"type\": \"coin\", \"amount\": 16}]\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:48901/findPath?startXPosition=0&startYPosition=1&targetXPosition=3&targetYPosition=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "48901",
+					"path": [
+						"findPath"
+					],
+					"query": [
+						{
+							"key": "startXPosition",
+							"value": "0"
+						},
+						{
+							"key": "startYPosition",
+							"value": "1"
+						},
+						{
+							"key": "targetXPosition",
+							"value": "3"
+						},
+						{
+							"key": "targetYPosition",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
