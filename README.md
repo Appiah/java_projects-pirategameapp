@@ -21,9 +21,9 @@ Building the App :
 
 
 
-#STAGE 1B : Containerisation & Testing using Docker ->
+#STAGE 2 : Containerisation & Testing using Docker ->
 
-4. In the terminal issue these commands :
+ In the terminal issue these commands :
 
     $ ./gradlew assemble
 
@@ -31,11 +31,21 @@ Building the App :
 
     Then issue this command :
 
+
+
+
+### TESTING THE APPLICATION ###
+
+#OPTION 1 : Using docker to get the application to run :
+
+```
     $ docker build -t pirategameapp .
+```
 
         the above command may take a while in the case of first time.
 
-        Sample Response : {
+        ```
+        ### Sample Response : {
 
           $ docker build -t pirategameapp .
           Sending build context to Docker daemon  84.34MB
@@ -62,31 +72,33 @@ Building the App :
 
 
         }
-
+        ```
 
     After a successful docker building process and downloading of all files needed,
     we can then issue this command :
 
-
+```
     $ docker run -p48901:48901 pirategameapp
-    
-    OR : 
-    
+```
+    OR :
+```
     $ docker run pirategameapp
-    
-    #SAMPLE TERMINAL RESPONSE IF it all worked out : 
-    
+```
+
+```
+    #SAMPLE TERMINAL RESPONSE IF it all worked out :
+
     $ docker run pirategameapp
      __  __ _                                  _   
-    |  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_ 
+    |  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_
     | |\/| | |/ __| '__/ _ \| '_ \ / _` | | | | __|
-    | |  | | | (__| | | (_) | | | | (_| | |_| | |_ 
+    | |  | | | (__| | | (_) | | | | (_| | |_| | |_
     |_|  |_|_|\___|_|  \___/|_| |_|\__,_|\__,_|\__|
       Micronaut (v2.3.0)
-    
+
     12:15:45.301 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 3983ms. Server Running: http://3d48fb74311b:48901
 
-    
+```
 
 
       you can check on docker images by using the command :
@@ -108,27 +120,36 @@ Building the App :
 
 
 
-#STAGE 2 : Running + Testing
+#OPTION 2 : Running + Testing
 
 Instructions on how to run :
 
-1. Confirm that port number setted in the application.yml file is available
+1. a. Import the project into an IDE (preferrably : InteliJ or Eclipse)
+    i. Ensure that 'Lombok' plugin is installed.
+    ii. Enable Annotations Processor @ [in InteliJ] -> Preferences -> Build/Execution/Deployment -> Compiler -> Annotation Processors -> Enable annotation processing
 
+   b. Confirm that port number setted in the application.yml file is available
+
+   [Warning : if you are still seeing errors, just quit or close InteliJ and
+   reimport the project.]
 
 2. navigate to the root of the projects folder in (a) terminal
 
 3. Issue this command in the terminal
 ./gradlew run
 
-On a successful start, you should see this in your terminal or cmd : 
+On a successful start, you should see this in your terminal or cmd :
 
 $ ./gradlew run
 
+     [Feel free to use the postman collections in the postman folder for testing purposes.]
+
+
 > Task :run
  __  __ _                                  _   
-|  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_ 
+|  \/  (_) ___ _ __ ___  _ __   __ _ _   _| |_
 | |\/| | |/ __| '__/ _ \| '_ \ / _` | | | | __|
-| |  | | | (__| | | (_) | | | | (_| | |_| | |_ 
+| |  | | | (__| | | (_) | | | | (_| | |_| | |_
 |_|  |_|_|\___|_|  \___/|_| |_|\__,_|\__,_|\__|
   Micronaut (v2.3.0)
 
@@ -139,24 +160,24 @@ $ ./gradlew run
 ##REQUEST SAMPLE -> POST
 
  {"game_map" : [
-    [{"type": "coin", "amount": 10}, 
-    {"type": "coin", "amount": 11}, 
-    {"type": "coin", "amount": 21}, 
+    [{"type": "coin", "amount": 10},
+    {"type": "coin", "amount": 11},
+    {"type": "coin", "amount": 21},
     {"type": "coin", "amount": 0}],
 
-    [{"type": "coin", "amount": 9}, 
-    {"type": "coin", "amount": 8}, 
-    {"type": "rock"}, 
+    [{"type": "coin", "amount": 9},
+    {"type": "coin", "amount": 8},
+    {"type": "rock"},
     {"type": "coin", "amount": 99}],
 
-    [{"type": "coin", "amount": 6}, 
-    {"type": "bomb"}, 
-    {"type": "rock"}, 
+    [{"type": "coin", "amount": 6},
+    {"type": "bomb"},
+    {"type": "rock"},
     {"type": "rock"}],
 
-    [{"type": "coin", "amount": 0}, 
-    {"type": "coin", "amount": 9}, 
-    {"type": "coin", "amount": 9}, 
+    [{"type": "coin", "amount": 0},
+    {"type": "coin", "amount": 9},
+    {"type": "coin", "amount": 9},
     {"type": "coin", "amount": 9}]
 ]}
 
@@ -196,9 +217,9 @@ $ ./gradlew run
 
 
 
-##TERMINAL LOG SAMPLES : 
+##TERMINAL LOG SAMPLES :
 
-16:21:40.661 [default-nioEventLoopGroup-1-3] INFO  P.controller.PathFinderController - Parameters : 
+16:21:40.661 [default-nioEventLoopGroup-1-3] INFO  P.controller.PathFinderController - Parameters :
 startXPosition : 0, startYPosition : 1, targetXPosition : 3, targetYPosition : 3
 16:21:40.663 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Given Targets from : { 0,1 } to : { 3,3 }
 16:21:40.663 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Move from array position : [2, 0] to : [0, 3]
@@ -212,7 +233,7 @@ startXPosition : 0, startYPosition : 1, targetXPosition : 3, targetYPosition : 3
 0, 9, 9, 9
 Live array for action : [[10, 11, 21, 0], [9, 8, 0, 99], [6, 0, 0, 0], [0, 9, 9, 9]]
 16:21:47.835 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.SaveGameMap - loadCoinsAndDoGridDisplay : [[I@1a98d71b, [I@4a8373a2, [I@495c77b0, [I@19626c12]
-16:21:53.719 [default-nioEventLoopGroup-1-3] INFO  P.controller.PathFinderController - Parameters : 
+16:21:53.719 [default-nioEventLoopGroup-1-3] INFO  P.controller.PathFinderController - Parameters :
 startXPosition : 0, startYPosition : 1, targetXPosition : 3, targetYPosition : 3
 16:21:53.720 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Given Targets from : { 0,1 } to : { 3,3 }
 16:21:53.720 [default-nioEventLoopGroup-1-3] INFO  PirateGameApp.service.FindPiratePath - Move from array position : [2, 0] to : [0, 3]
